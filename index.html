@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Parsico CPA — Expert Accounting & Tax Services | Century City, Los Angeles</title>
+<meta name="description" content="Parsi & Company, CPA — Personalized accounting, tax preparation, IRS representation, and forensic accounting in Century City, Los Angeles. 25+ years. Never lost an audit."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: { DEFAULT: '#0A2540', 800: '#0d2e4d', 700: '#103860', 600: '#144a80', 500: '#1a5fa3' },
+        gold: { DEFAULT: '#C9A96E', light: '#dfc49a', dark: '#a8894e' },
+        sage: { DEFAULT: '#6B8E6E', light: '#8aad8a', dark: '#4e6b50' },
+        cream: '#F9F6F1',
+        stone: '#EAE6DF',
+      },
+      fontFamily: {
+        serif: ['Merriweather', 'Georgia', 'serif'],
+        sans: ['Lato', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}
+</script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Lato', sans-serif; color: #1a1a2e; background: #F9F6F1; overflow-x: hidden; }
+
+  /* ── fade-in on scroll ── */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ── hero geometric bg ── */
+  .hero-bg {
+    background-color: #0A2540;
+    background-image:
+      radial-gradient(ellipse 70% 60% at 90% 50%, rgba(201,169,110,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(107,142,110,0.10) 0%, transparent 55%);
+  }
+  .hero-grid {
+    background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* ── navbar ── */
+  .nav-link { position: relative; }
+  .nav-link::after {
+    content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+    background: #C9A96E; transition: width 0.3s ease;
+  }
+  .nav-link:hover::after { width: 100%; }
+
+  /* ── gold accent line ── */
+  .gold-line { width: 48px; height: 3px; background: #C9A96E; border-radius: 2px; }
+
+  /* ── service card ── */
+  .service-card {
+    border: 1px solid rgba(10,37,64,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    background: white;
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(10,37,64,0.12);
+    border-color: rgba(201,169,110,0.4);
+  }
+  .service-card:hover .service-icon { background: #0A2540; color: #C9A96E; }
+  .service-icon { transition: background 0.3s ease, color 0.3s ease; }
+
+  /* ── stat counter ── */
+  .stat-item { border-right: 1px solid rgba(255,255,255,0.15); }
+  .stat-item:last-child { border-right: none; }
+
+  /* ── testimonial ── */
+  .testimonial-card {
+    border-top: 3px solid #C9A96E;
+    transition: box-shadow 0.3s ease;
+    background: white;
+  }
+  .testimonial-card:hover { box-shadow: 0 12px 40px rgba(10,37,64,0.1); }
+
+  /* ── btn ── */
+  .btn-primary {
+    background: #C9A96E; color: #0A2540; font-weight: 700;
+    transition: background 0.25s, transform 0.15s, box-shadow 0.25s;
+  }
+  .btn-primary:hover { background: #a8894e; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(201,169,110,0.35); }
+
+  .btn-outline-white {
+    border: 1.5px solid rgba(255,255,255,0.5); color: white;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+  .btn-navy {
+    background: #0A2540; color: white; font-weight: 700;
+    transition: background 0.25s, transform 0.15s;
+  }
+  .btn-navy:hover { background: #103860; transform: translateY(-1px); }
+
+  /* ── mobile menu ── */
+  #mobile-menu { transition: max-height 0.35s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+  #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+  /* ── divider wave ── */
+  .wave-divider { display: block; width: 100%; overflow: hidden; line-height: 0; }
+  .wave-divider svg { display: block; }
+
+  /* ── process step ── */
+  .step-line { flex: 1; height: 1px; background: linear-gradient(90deg, #C9A96E, transparent); }
+
+  /* ── sticky nav on scroll ── */
+  #navbar { transition: background 0.3s ease, box-shadow 0.3s ease; }
+  #navbar.scrolled { background: rgba(10,37,64,0.97); backdrop-filter: blur(12px); box-shadow: 0 2px 24px rgba(0,0,0,0.2); }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     NAVBAR
+══════════════════════════════════════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-navy" role="navigation" aria-label="Main navigation">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="flex items-center justify-between h-18 py-4">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-lg bg-gold flex items-center justify-center shrink-0">
+          <span class="font-serif font-bold text-navy text-sm">P</span>
+        </div>
+        <div>
+          <span class="font-serif font-bold text-white text-lg leading-none tracking-tight">Parsico CPA</span>
+          <span class="block text-gold text-xs tracking-widest font-sans font-light uppercase">Parsi &amp; Company</span>
+        </div>
+      </a>
+
+      <!-- Desktop menu -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#services" class="nav-link text-white/80 hover:text-white text-sm font-sans tracking-wide transition-colors">Services</a>
+        <a href="#why" class="nav-link text-white/80 hover:text-white text-sm font-sans tracking-wide transition-colors">About</a>
+        <a href="#process" class="nav-link text-white/80 hover:text-white text-sm font-sans tracking-wide transition-colors">Process</a>
+        <a href="#testimonials" class="nav-link text-white/80 hover:text-white text-sm font-sans tracking-wide transition-colors">Clients</a>
+        <a href="#contact" class="nav-link text-white/80 hover:text-white text-sm font-sans tracking-wide transition-colors">Contact</a>
+      </div>
+
+      <div class="hidden md:flex items-center gap-3">
+        <a href="tel:3105563655" class="text-white/70 hover:text-gold text-sm font-sans transition-colors">
+          <i class="fa-solid fa-phone text-xs mr-1"></i>(310) 556-3655
+        </a>
+        <a href="#contact" class="btn-primary px-5 py-2.5 rounded-lg text-sm font-sans">Schedule Call</a>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-toggle" class="md:hidden text-white p-2" aria-label="Toggle menu" aria-expanded="false">
+        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden bg-navy-800 border-t border-white/10">
+    <div class="px-6 py-4 flex flex-col gap-4">
+      <a href="#services" class="text-white/80 hover:text-gold text-sm font-sans py-1 transition-colors mobile-link">Services</a>
+      <a href="#why" class="text-white/80 hover:text-gold text-sm font-sans py-1 transition-colors mobile-link">About</a>
+      <a href="#process" class="text-white/80 hover:text-gold text-sm font-sans py-1 transition-colors mobile-link">Process</a>
+      <a href="#testimonials" class="text-white/80 hover:text-gold text-sm font-sans py-1 transition-colors mobile-link">Clients</a>
+      <a href="#contact" class="text-white/80 hover:text-gold text-sm font-sans py-1 transition-colors mobile-link">Contact</a>
+      <a href="tel:3105563655" class="text-gold text-sm font-sans py-1">(310) 556-3655</a>
+      <a href="#contact" class="btn-primary px-5 py-2.5 rounded-lg text-sm font-sans text-center w-full">Schedule a Free Call</a>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<section class="hero-bg min-h-screen flex items-center pt-18 relative overflow-hidden" aria-label="Hero section">
+
+  <!-- grid texture -->
+  <div class="hero-grid absolute inset-0 opacity-100"></div>
+
+  <!-- decorative shapes -->
+  <div class="absolute top-20 right-0 w-96 h-96 rounded-full bg-gold/5 blur-3xl pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-sage/8 blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-white/5 pointer-events-none"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-white/5 pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-24 relative z-10 grid lg:grid-cols-2 gap-16 items-center w-full">
+
+    <!-- left copy -->
+    <div>
+      <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-8">
+        <span class="w-2 h-2 rounded-full bg-sage animate-pulse"></span>
+        <span class="text-white/80 text-xs font-sans tracking-wider uppercase">Century City · Los Angeles · All 50 States</span>
+      </div>
+
+      <h1 class="font-serif text-white text-4xl md:text-5xl xl:text-6xl leading-tight font-bold mb-6">
+        Stop worrying<br/>
+        <span class="text-gold">about the IRS.</span><br/>
+        <span class="text-white/90 font-light text-3xl md:text-4xl xl:text-5xl">Start focusing on what<br/>you do best.</span>
+      </h1>
+
+      <p class="font-sans text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
+        Parsi &amp; Company, CPA — precision accounting for individuals and businesses across all 50 states. 25+ years. Never lost an audit.
+      </p>
+
+      <div class="flex flex-wrap gap-4 mb-14">
+        <a href="#contact" class="btn-primary px-8 py-3.5 rounded-lg font-sans text-base inline-flex items-center gap-2">
+          Get Started Free <i class="fa-solid fa-arrow-right text-sm"></i>
+        </a>
+        <a href="#services" class="btn-outline-white px-8 py-3.5 rounded-lg font-sans text-base inline-flex items-center gap-2">
+          Our Services <i class="fa-solid fa-chevron-down text-sm"></i>
+        </a>
+      </div>
+
+      <!-- trust badges -->
+      <div class="flex flex-wrap gap-6">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-shield-halved text-gold text-sm"></i>
+          <span class="text-white/60 text-xs font-sans">CPA Licensed</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-award text-gold text-sm"></i>
+          <span class="text-white/60 text-xs font-sans">DABFA Certified</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <span class="text-white/60 text-xs font-sans">5-Star Rated</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-lock text-gold text-sm"></i>
+          <span class="text-white/60 text-xs font-sans">IRS Authorized</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- right — stats card -->
+    <div class="hidden lg:block">
+      <div class="relative">
+        <!-- main card -->
+        <div class="bg-white/8 border border-white/15 backdrop-blur-sm rounded-2xl p-8">
+          <p class="text-gold text-xs font-sans uppercase tracking-widest mb-5 font-bold">By the numbers</p>
+          <div class="grid grid-cols-2 gap-6">
+            <div>
+              <div class="font-serif text-white text-5xl font-bold leading-none mb-1">25<span class="text-gold text-2xl">+</span></div>
+              <div class="text-white/50 text-sm font-sans">Years in operation</div>
+            </div>
+            <div>
+              <div class="font-serif text-white text-5xl font-bold leading-none mb-1">50</div>
+              <div class="text-white/50 text-sm font-sans">States served</div>
+            </div>
+            <div>
+              <div class="font-serif text-white text-5xl font-bold leading-none mb-1">0</div>
+              <div class="text-white/50 text-sm font-sans">Audits lost — ever</div>
+            </div>
+            <div>
+              <div class="font-serif text-white text-5xl font-bold leading-none mb-1">10<span class="text-gold text-2xl">+</span></div>
+              <div class="text-white/50 text-sm font-sans">Team members</div>
+            </div>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-white/10">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gold/20 border border-gold/30 flex items-center justify-center">
+                <span class="font-serif text-gold font-bold text-sm">SP</span>
+              </div>
+              <div>
+                <p class="text-white text-sm font-sans font-bold">Said Parsi, CPA · DABFA</p>
+                <p class="text-white/50 text-xs font-sans">Founding Principal · Certified Forensic Accountant</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- floating badge -->
+        <div class="absolute -bottom-5 -right-5 bg-sage text-white px-4 py-2.5 rounded-xl shadow-xl">
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-circle-check text-sm"></i>
+            <span class="text-xs font-sans font-bold">Free Initial Consultation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom wave -->
+  <div class="wave-divider absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#F9F6F1"/>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     SERVICES
+══════════════════════════════════════════════ -->
+<section id="services" class="py-24 bg-cream" aria-label="Services">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center mb-16 reveal">
+      <p class="text-gold text-xs font-sans uppercase tracking-widest font-bold mb-3">What we do</p>
+      <h2 class="font-serif text-navy text-3xl md:text-4xl font-bold mb-4">Comprehensive CPA Services</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-navy/60 font-sans text-lg max-w-2xl mx-auto">From personal tax prep to complex forensic investigations — we bring precision, accountability, and deep expertise to every engagement.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Tax Preparation -->
+      <div class="service-card rounded-2xl p-7 reveal reveal-delay-1">
+        <div class="service-icon w-13 h-13 w-14 h-14 rounded-xl bg-navy/6 text-navy flex items-center justify-center mb-5 text-xl">
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+        </div>
+        <h3 class="font-serif text-navy text-lg font-bold mb-3">Tax Preparation</h3>
+        <p class="font-sans text-navy/60 text-sm leading-relaxed mb-5">Licensed CPAs who contact the IRS directly on your behalf — so no deduction goes unclaimed and no liability is overlooked.</p>
+        <ul class="space-y-2 text-sm font-sans text-navy/70">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Personal tax returns</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Business tax returns</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Multi-state filings</li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 text-navy text-sm font-sans font-bold hover:text-gold transition-colors">Learn more <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      </div>
+
+      <!-- IRS Representation -->
+      <div class="service-card rounded-2xl p-7 reveal reveal-delay-2">
+        <div class="service-icon w-14 h-14 rounded-xl bg-navy/6 text-navy flex items-center justify-center mb-5 text-xl">
+          <i class="fa-solid fa-scale-balanced"></i>
+        </div>
+        <h3 class="font-serif text-navy text-lg font-bold mb-3">IRS Representation</h3>
+        <p class="font-sans text-navy/60 text-sm leading-relaxed mb-5">Received an audit notice? We take over the entire process — communicating with the IRS daily. Never lost an audit in 25+ years.</p>
+        <ul class="space-y-2 text-sm font-sans text-navy/70">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Audit defense</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Tax dispute resolution</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Levy &amp; lien relief</li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 text-navy text-sm font-sans font-bold hover:text-gold transition-colors">Learn more <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      </div>
+
+      <!-- Bookkeeping & Advisory -->
+      <div class="service-card rounded-2xl p-7 reveal reveal-delay-3">
+        <div class="service-icon w-14 h-14 rounded-xl bg-navy/6 text-navy flex items-center justify-center mb-5 text-xl">
+          <i class="fa-solid fa-chart-line"></i>
+        </div>
+        <h3 class="font-serif text-navy text-lg font-bold mb-3">Bookkeeping &amp; Advisory</h3>
+        <p class="font-sans text-navy/60 text-sm leading-relaxed mb-5">Clean, up-to-date financial statements are the foundation of every healthy business. We maintain your books so you can make confident decisions.</p>
+        <ul class="space-y-2 text-sm font-sans text-navy/70">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Monthly bookkeeping</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Financial statement audits</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Business consulting</li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 text-navy text-sm font-sans font-bold hover:text-gold transition-colors">Learn more <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      </div>
+
+      <!-- Forensic Accounting -->
+      <div class="service-card rounded-2xl p-7 reveal reveal-delay-4" style="border-color: rgba(201,169,110,0.3); border-width: 1px;">
+        <div class="service-icon w-14 h-14 rounded-xl bg-gold/10 text-gold-dark flex items-center justify-center mb-5 text-xl">
+          <i class="fa-solid fa-magnifying-glass-dollar"></i>
+        </div>
+        <div class="inline-block bg-gold/10 text-gold-dark text-xs font-sans font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3">Exclusive</div>
+        <h3 class="font-serif text-navy text-lg font-bold mb-3">Forensic Accounting</h3>
+        <p class="font-sans text-navy/60 text-sm leading-relaxed mb-5">Said Parsi holds the DABFA — Diplomate of the American Board of Forensic Accounting. Divorce proceedings, fraud investigation, and hidden asset detection.</p>
+        <ul class="space-y-2 text-sm font-sans text-navy/70">
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Divorce &amp; family law</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Fraud &amp; embezzlement</li>
+          <li class="flex items-center gap-2"><i class="fa-solid fa-check text-sage text-xs"></i> Hidden asset tracing</li>
+        </ul>
+        <a href="#contact" class="mt-6 inline-flex items-center gap-1.5 text-gold-dark text-sm font-sans font-bold hover:text-navy transition-colors">Learn more <i class="fa-solid fa-arrow-right text-xs"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     WHY PARSICO
+══════════════════════════════════════════════ -->
+<section id="why" class="py-24 bg-white" aria-label="Why Parsico CPA">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- image side -->
+      <div class="reveal order-2 lg:order-1">
+        <div class="relative">
+          <!-- placeholder image area -->
+          <div class="aspect-[4/3] rounded-2xl overflow-hidden bg-navy/5 border border-navy/8 flex items-center justify-center">
+            <div class="text-center">
+              <div class="w-20 h-20 rounded-full bg-navy/10 flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-building-columns text-navy/30 text-3xl"></i>
+              </div>
+              <p class="text-navy/30 text-sm font-sans">Team photo — Century City Office</p>
+              <p class="text-navy/20 text-xs font-sans mt-1">1801 Century Park East, Suite 1132</p>
+            </div>
+          </div>
+          <!-- floating accent card -->
+          <div class="absolute -bottom-6 -right-6 bg-navy text-white rounded-xl p-5 shadow-2xl max-w-xs">
+            <div class="flex items-center gap-3 mb-3">
+              <i class="fa-solid fa-trophy text-gold text-lg"></i>
+              <span class="font-sans font-bold text-sm">25+ Years · 0 Audits Lost</span>
+            </div>
+            <p class="text-white/60 text-xs font-sans leading-relaxed">Our track record speaks for itself. We've represented clients before the IRS for over two decades without a single audit loss.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- text side -->
+      <div class="reveal reveal-delay-2 order-1 lg:order-2">
+        <p class="text-gold text-xs font-sans uppercase tracking-widest font-bold mb-3">Why choose us</p>
+        <h2 class="font-serif text-navy text-3xl md:text-4xl font-bold mb-4">Precision accounting with a personal touch</h2>
+        <div class="gold-line mb-6"></div>
+        <p class="font-sans text-navy/65 text-base leading-relaxed mb-8">
+          Based in Century City and serving clients across the country, Parsi &amp; Company combines the rigor of a large firm with the personalized attention you'd expect from a trusted advisor. We don't outsource, we don't cut corners, and we never leave a stone unturned.
+        </p>
+
+        <div class="space-y-5 mb-10">
+          <div class="flex items-start gap-4">
+            <div class="w-9 h-9 rounded-lg bg-navy/6 flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-microscope text-navy text-sm"></i>
+            </div>
+            <div>
+              <h4 class="font-sans font-bold text-navy text-sm mb-1">We contact the IRS on every return</h4>
+              <p class="text-navy/60 text-sm font-sans leading-relaxed">Most CPA firms skip this step. We don't. It's time-consuming, but it's how we catch what others miss and protect you from costly reassessments.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-9 h-9 rounded-lg bg-navy/6 flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-users text-navy text-sm"></i>
+            </div>
+            <div>
+              <h4 class="font-sans font-bold text-navy text-sm mb-1">A multilingual team serving diverse clients</h4>
+              <p class="text-navy/60 text-sm font-sans leading-relaxed">Our team includes CPAs, EAs, CMAs, and forensic specialists — multilingual, experienced, and dedicated to your financial wellbeing.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-9 h-9 rounded-lg bg-navy/6 flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-handshake text-navy text-sm"></i>
+            </div>
+            <div>
+              <h4 class="font-sans font-bold text-navy text-sm mb-1">Your success is our success</h4>
+              <p class="text-navy/60 text-sm font-sans leading-relaxed">We don't just file returns — we become your long-term financial allies, helping businesses grow and individuals protect their wealth for generations.</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-9 h-9 rounded-lg bg-navy/6 flex items-center justify-center shrink-0 mt-0.5">
+              <i class="fa-solid fa-certificate text-navy text-sm"></i>
+            </div>
+            <div>
+              <h4 class="font-sans font-bold text-navy text-sm mb-1">DABFA — the highest forensic accounting credential</h4>
+              <p class="text-navy/60 text-sm font-sans leading-relaxed">Said Parsi is a Diplomate of the American Board of Forensic Accounting — a distinction held by fewer than 500 professionals nationwide.</p>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-primary px-8 py-3.5 rounded-lg font-sans text-base inline-flex items-center gap-2">
+          Meet the Team <i class="fa-solid fa-arrow-right text-sm"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     PROCESS
+══════════════════════════════════════════════ -->
+<section id="process" class="py-24 bg-navy relative overflow-hidden" aria-label="Our process">
+  <div class="absolute inset-0 hero-grid opacity-40"></div>
+  <div class="absolute top-0 right-0 w-80 h-80 rounded-full bg-gold/5 blur-3xl pointer-events-none"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
+    <div class="text-center mb-16 reveal">
+      <p class="text-gold text-xs font-sans uppercase tracking-widest font-bold mb-3">How it works</p>
+      <h2 class="font-serif text-white text-3xl md:text-4xl font-bold mb-4">Our 4-Step Process</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-white/55 font-sans text-lg max-w-xl mx-auto">From first contact to final filing — a clear, transparent process designed around your schedule and needs.</p>
+    </div>
+
+    <div class="grid md:grid-cols-4 gap-6">
+      <div class="text-center reveal reveal-delay-1">
+        <div class="w-14 h-14 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center mx-auto mb-4">
+          <span class="font-serif text-gold font-bold text-lg">01</span>
+        </div>
+        <h4 class="font-sans text-white font-bold text-base mb-2">Free Consultation</h4>
+        <p class="text-white/50 text-sm font-sans leading-relaxed">30-minute call with a CPA to understand your situation, goals, and which services fit best.</p>
+      </div>
+      <div class="text-center reveal reveal-delay-2">
+        <div class="w-14 h-14 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center mx-auto mb-4">
+          <span class="font-serif text-gold font-bold text-lg">02</span>
+        </div>
+        <h4 class="font-sans text-white font-bold text-base mb-2">Tax Evaluation</h4>
+        <p class="text-white/50 text-sm font-sans leading-relaxed">We conduct a thorough review of your finances, then contact the IRS to cross-reference reported data.</p>
+      </div>
+      <div class="text-center reveal reveal-delay-3">
+        <div class="w-14 h-14 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center mx-auto mb-4">
+          <span class="font-serif text-gold font-bold text-lg">03</span>
+        </div>
+        <h4 class="font-sans text-white font-bold text-base mb-2">Preparation &amp; Review</h4>
+        <p class="text-white/50 text-sm font-sans leading-relaxed">We prepare your return, optimize every deduction, and send it to you for a final review before anything is filed.</p>
+      </div>
+      <div class="text-center reveal reveal-delay-4">
+        <div class="w-14 h-14 rounded-full bg-gold/15 border border-gold/30 flex items-center justify-center mx-auto mb-4">
+          <span class="font-serif text-gold font-bold text-lg">04</span>
+        </div>
+        <h4 class="font-sans text-white font-bold text-base mb-2">E-File &amp; Support</h4>
+        <p class="text-white/50 text-sm font-sans leading-relaxed">We e-file on your behalf and remain your point of contact for any IRS questions or follow-ups throughout the year.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════════════ -->
+<section id="testimonials" class="py-24 bg-cream" aria-label="Client testimonials">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center mb-16 reveal">
+      <p class="text-gold text-xs font-sans uppercase tracking-widest font-bold mb-3">Client stories</p>
+      <h2 class="font-serif text-navy text-3xl md:text-4xl font-bold mb-4">What Our Clients Say</h2>
+      <div class="gold-line mx-auto mb-6"></div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-7">
+
+      <div class="testimonial-card rounded-2xl p-7 reveal reveal-delay-1">
+        <div class="flex gap-1 mb-4">
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+        </div>
+        <p class="font-serif text-navy/80 text-sm leading-relaxed mb-6 italic">"We received an IRS audit notice and didn't know what to do. Parsi &amp; Company took over immediately and resolved everything in our favor. After 15 years as a client, I trust them completely."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center">
+            <span class="font-sans font-bold text-navy text-sm">MR</span>
+          </div>
+          <div>
+            <p class="font-sans font-bold text-navy text-sm">Michael R.</p>
+            <p class="text-navy/50 text-xs font-sans">Small Business Owner · Los Angeles</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-7 reveal reveal-delay-2">
+        <div class="flex gap-1 mb-4">
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+        </div>
+        <p class="font-serif text-navy/80 text-sm leading-relaxed mb-6 italic">"Said Parsi's forensic work during my divorce was extraordinary. He uncovered assets I didn't even know existed. His precision and professionalism under pressure were exceptional."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center">
+            <span class="font-sans font-bold text-navy text-sm">JL</span>
+          </div>
+          <div>
+            <p class="font-sans font-bold text-navy text-sm">Jennifer L.</p>
+            <p class="text-navy/50 text-xs font-sans">Private Client · Beverly Hills</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card rounded-2xl p-7 reveal reveal-delay-3">
+        <div class="flex gap-1 mb-4">
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+          <i class="fa-solid fa-star text-gold text-sm"></i>
+        </div>
+        <p class="font-serif text-navy/80 text-sm leading-relaxed mb-6 italic">"Our company scaled from 3 to 27 employees in four years. Parsi &amp; Company managed our bookkeeping and tax strategy throughout. They're not just our CPAs — they're part of our growth team."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-navy/10 flex items-center justify-center">
+            <span class="font-sans font-bold text-navy text-sm">DC</span>
+          </div>
+          <div>
+            <p class="font-sans font-bold text-navy text-sm">David C.</p>
+            <p class="text-navy/50 text-xs font-sans">CEO, Tech Startup · Santa Monica</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     CTA BANNER
+══════════════════════════════════════════════ -->
+<section id="contact" class="py-24 bg-white relative overflow-hidden" aria-label="Contact and CTA">
+  <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent opacity-40"></div>
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-navy/3 blur-3xl"></div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center relative z-10">
+    <div class="reveal">
+      <p class="text-gold text-xs font-sans uppercase tracking-widest font-bold mb-4">Get started today</p>
+      <h2 class="font-serif text-navy text-3xl md:text-5xl font-bold mb-5 leading-tight">
+        Ready to take control<br/>of your finances?
+      </h2>
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="font-sans text-navy/60 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+        Schedule your free 30-minute consultation. No commitment, no pressure — just a straightforward conversation with a licensed CPA.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+        <a href="tel:3105563655" class="btn-primary px-8 py-4 rounded-xl font-sans text-base inline-flex items-center justify-center gap-2">
+          <i class="fa-solid fa-phone text-sm"></i> Call (310) 556-3655
+        </a>
+        <a href="mailto:info@parsicocpa.com" class="btn-navy px-8 py-4 rounded-xl font-sans text-base inline-flex items-center justify-center gap-2">
+          <i class="fa-solid fa-envelope text-sm"></i> Email Us
+        </a>
+      </div>
+
+      <!-- quick contact row -->
+      <div class="grid sm:grid-cols-3 gap-6 max-w-2xl mx-auto text-center">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center">
+            <i class="fa-solid fa-map-pin text-navy text-sm"></i>
+          </div>
+          <p class="text-navy font-sans font-bold text-sm">Visit Us</p>
+          <p class="text-navy/55 text-xs font-sans leading-snug">1801 Century Park East<br/>Suite 1132, LA CA 90067</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center">
+            <i class="fa-solid fa-clock text-navy text-sm"></i>
+          </div>
+          <p class="text-navy font-sans font-bold text-sm">Office Hours</p>
+          <p class="text-navy/55 text-xs font-sans leading-snug">Mon–Sat: 9AM–6PM<br/>Sun: 12–4PM</p>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-10 h-10 rounded-xl bg-navy/5 flex items-center justify-center">
+            <i class="fa-solid fa-fax text-navy text-sm"></i>
+          </div>
+          <p class="text-navy font-sans font-bold text-sm">Fax</p>
+          <p class="text-navy/55 text-xs font-sans leading-snug">(424) 320-3211</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════ -->
+<footer class="bg-navy pt-16 pb-8" aria-label="Footer">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <div class="grid md:grid-cols-4 gap-10 pb-12 border-b border-white/10">
+
+      <!-- brand -->
+      <div class="md:col-span-1">
+        <a href="#" class="flex items-center gap-3 mb-5">
+          <div class="w-9 h-9 rounded-lg bg-gold flex items-center justify-center">
+            <span class="font-serif font-bold text-navy text-sm">P</span>
+          </div>
+          <div>
+            <span class="font-serif font-bold text-white text-base leading-none">Parsico CPA</span>
+            <span class="block text-gold text-xs font-sans">Parsi &amp; Company</span>
+          </div>
+        </a>
+        <p class="text-white/45 text-xs font-sans leading-relaxed mb-5">Precision accounting for individuals and businesses across the United States. Based in Century City, Los Angeles.</p>
+        <div class="flex gap-3">
+          <a href="#" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in text-white/70 text-sm"></i></a>
+          <a href="#" class="w-8 h-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors" aria-label="Google"><i class="fa-brands fa-google text-white/70 text-sm"></i></a>
+        </div>
+      </div>
+
+      <!-- personal services -->
+      <div>
+        <p class="text-white font-sans font-bold text-sm mb-5 uppercase tracking-wider">Personal Services</p>
+        <ul class="space-y-3">
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Personal Tax Preparation</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">IRS Audit Defense</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Trust &amp; Estate Planning</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Loan Applications</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Forensic Accounting</a></li>
+        </ul>
+      </div>
+
+      <!-- business services -->
+      <div>
+        <p class="text-white font-sans font-bold text-sm mb-5 uppercase tracking-wider">Business Services</p>
+        <ul class="space-y-3">
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Business Tax Preparation</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Bookkeeping</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Financial Statement Audits</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Tax Dispute Resolutions</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">Business Consulting</a></li>
+        </ul>
+      </div>
+
+      <!-- contact -->
+      <div>
+        <p class="text-white font-sans font-bold text-sm mb-5 uppercase tracking-wider">Contact</p>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-2">
+            <i class="fa-solid fa-map-pin text-gold text-xs mt-1 shrink-0"></i>
+            <span class="text-white/50 text-sm font-sans">1801 Century Park East, Suite 1132<br/>Los Angeles, CA 90067</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fa-solid fa-phone text-gold text-xs shrink-0"></i>
+            <a href="tel:3105563655" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">(310) 556-3655</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fa-solid fa-envelope text-gold text-xs shrink-0"></i>
+            <a href="mailto:info@parsicocpa.com" class="text-white/50 hover:text-gold text-sm font-sans transition-colors">info@parsicocpa.com</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <i class="fa-solid fa-fax text-gold text-xs shrink-0"></i>
+            <span class="text-white/50 text-sm font-sans">(424) 320-3211</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- bottom bar -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-white/30 text-xs font-sans">© 2026 Parsi &amp; Company, CPA. All rights reserved. · Century City, Los Angeles, CA</p>
+      <div class="flex gap-5">
+        <a href="#" class="text-white/30 hover:text-white/60 text-xs font-sans transition-colors">Privacy Policy</a>
+        <a href="#" class="text-white/30 hover:text-white/60 text-xs font-sans transition-colors">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ══════════════════════════════════════════════
+     JS
+══════════════════════════════════════════════ -->
+<script>
+// sticky navbar
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 60) navbar.classList.add('scrolled');
+  else navbar.classList.remove('scrolled');
+});
+
+// mobile menu toggle
+const toggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon = document.getElementById('menu-icon');
+toggle.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('open');
+  toggle.setAttribute('aria-expanded', isOpen);
+  menuIcon.className = isOpen ? 'fa-solid fa-xmark text-xl' : 'fa-solid fa-bars text-xl';
+});
+
+// close mobile menu on link click
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+    menuIcon.className = 'fa-solid fa-bars text-xl';
+  });
+});
+
+// scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
